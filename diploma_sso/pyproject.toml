@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "diploma-sso"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.2"
+uvicorn = "^0.29.0"
+sqlalchemy = "^2.0.29"
+pydantic = {extras = ["email"], version = "^2.7.1"}
+requests = "^2.31.0"
+bcrypt = "^4.1.2"
+passlib = {version = "^1.7.4", extras = ["bcrypt"]}
+python-jose = "^3.3.0"
+gunicorn = "^22.0.0"
+psycopg2-binary = "^2.9.9"
+asyncpg = "^0.29.0"
+pylint = "^3.1.0"
+black = "^24.4.2"
+flake8 = "^7.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

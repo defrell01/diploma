@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    command: poetry run python main.py
+    volumes:
+      - .:/app
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:password@db/postgres
+      - SECRET_KEY=09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7
+      - ADMIN_USERNAME=admin@admin.ru
+      - ADMIN_PASSWORD=admin
+      - EMAIL_LOGIN=parking_test01@sibnet.ru
+      - EMAIL_PASSWORD=parking_test01
+      - USE_WSGI=0
+      - CONFIG=config.json
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
